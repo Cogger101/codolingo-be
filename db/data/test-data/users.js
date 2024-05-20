@@ -4,7 +4,7 @@ module.exports = [
     score: 30,
     password: "password",
     avatar_url: "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    friends: ["cogger101", "thompsurn"],
+    friends: ["cogger101"],
     progress: [1, 2, 3],
   },
   {
