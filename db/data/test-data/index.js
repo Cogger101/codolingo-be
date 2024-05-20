@@ -1,3 +1,3 @@
-exports.lessons = require("./lessons")
-exports.users = require("./users")
-exports.questions = require("./questions")
+exports.lessonData = require("./lessons")
+exports.userData = require("./users")
+exports.questionData = require("./questions")
