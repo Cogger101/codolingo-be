@@ -12,5 +12,4 @@ const seed = async ({ lessonData, userData, questionData }) => {
   await db.collection("questions").insertMany(questionData)
 }
 
-
 module.exports = seed
