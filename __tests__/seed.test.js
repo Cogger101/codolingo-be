@@ -33,7 +33,6 @@ describe("seed()", () => {
 				.then((result) => {
 				  expect(result.length).toBe(3)
 			    result.forEach(user => {
-					console.log(user._id, '<---- seed')
 			      expect(user).toHaveProperty("_id", expect.any(Object));
 			      expect(user).toHaveProperty("user_name", expect.any(String))
 				  expect(user).toHaveProperty("score", expect.any(Number));
