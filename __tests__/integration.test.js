@@ -110,4 +110,21 @@ describe("integration tests", () => {
       });
     });
   });
+
+  describe("/api/lessons", () => {
+    describe("GET", () => {
+      test("GET: 200, sends an array of all lessons", () => {
+        return request(app)
+          .get("/api/lessons")
+          .expect(200)
+          .then(({ body: { lessons } }) => {
+            expect(lessons.length).toBe(2);
+            lessons.forEach((lesson) => {
+              expect(lesson).toHaveProperty("_id", expect.any(Number));
+              expect(lesson).toHaveProperty("questions", expect.any(Array));
+            });
+          });
+      });
+    });
+  });
 });
