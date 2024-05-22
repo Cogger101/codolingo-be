@@ -4,6 +4,7 @@ const data = require("../db/data/test-data/index.js");
 const app = require("../app.js");
 const request = require("supertest");
 const users = require("../db/data/development-data/users.js");
+const endpointsFile = require("../endpoints.json");
 
 beforeEach(() => seed(data));
 afterAll(() => client.close());
@@ -21,6 +22,20 @@ describe("integration tests", () => {
         });
     });
   });
+
+  describe("/api", () => {
+    describe("GET", () => {
+      test("GET: 200, sends an object with details on all available endpoints", () => {
+        return request(app)
+          .get("/api")
+          .expect(200)
+          .then(({ body: { endpoints } }) => {
+            expect(endpoints).toEqual(endpointsFile);
+          });
+      });
+    });
+  });
+
   describe("/api/users", () => {
     describe("GET", () => {
       test("GET:200 sends an array of all users", () => {
