@@ -1,0 +1,70 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/users": {
+    "description": "serves an array of all users",
+    "exampleResponse": {
+      "users": [
+        {
+          "user_name": "cogger101",
+          "score": 50,
+          "password": "password",
+          "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "friends": ["G-eebs"],
+          "progress": [1, 2, 3, 4, 5]
+        }
+      ]
+    }
+  },
+
+  "GET /api/users/:user_name": {
+    "description": "serves a single user object of the specified username",
+    "exampleResponse": {
+      "user": {
+        "user_name": "cogger101",
+        "score": 50,
+        "password": "password",
+        "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "friends": ["G-eebs"],
+        "progress": [1, 2, 3, 4, 5]
+      }
+    }
+  },
+
+  "POST /api/users/": {
+    "description": "adds a user, serves the created user back to the client",
+    "exampleRequest": {
+      "user_name": "octopus",
+      "password": "password",
+      "avatar_url": "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+
+    "exampleResponse": {
+      "postedUser": {
+        "user_name": "octopus",
+        "score": 0,
+        "password": "password",
+        "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "friends": [],
+        "progress": []
+      }
+    }
+  },
+
+  "GET /api/lessons": {
+    "description": "serves an array of all lessons",
+    "exampleResponse": {
+      "lessons": [
+        {
+          "_id": 1,
+          "questions": [1, 2, 3, 4]
+        },
+        {
+          "_id": 2,
+          "questions": [5, 6, 7, 8]
+        }
+      ]
+    }
+  }
+}
