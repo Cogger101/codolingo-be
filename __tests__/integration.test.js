@@ -124,21 +124,77 @@ describe("integration tests", () => {
           });
       });
     });
-  });
 
-  describe("/api/lessons", () => {
-    describe("GET", () => {
-      test("GET: 200, sends an array of all lessons", () => {
-        return request(app)
-          .get("/api/lessons")
-          .expect(200)
-          .then(({ body: { lessons } }) => {
-            expect(lessons.length).toBe(2);
-            lessons.forEach((lesson) => {
-              expect(lesson).toHaveProperty("_id", expect.any(Number));
-              expect(lesson).toHaveProperty("questions", expect.any(Array));
+    describe("/api/users/:user_name/friends", () => {
+      describe("PATCH", () => {
+        test("PATCH: 200, adds a friend to the user object", () => {
+          const testPatch = { friend: "thompsurn" };
+          return request(app)
+            .patch("/api/users/cogger101/friends")
+            .send(testPatch)
+            .expect(200)
+            .then(({ body: { user } }) => {
+              expect(user).toMatchObject({
+                user_name: "cogger101",
+                password: "password",
+                avatar_url:
+                  "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                score: 50,
+                friends: ["G-eebs", "thompsurn"],
+              });
+            });
+        });
+      });
+
+      describe("/api/lessons", () => {
+        describe("GET", () => {
+          test("GET: 200, sends an array of all lessons", () => {
+            return request(app)
+              .get("/api/lessons")
+              .expect(200)
+              .then(({ body: { lessons } }) => {
+                expect(lessons.length).toBe(2);
+                lessons.forEach((lesson) => {
+                  expect(lesson).toHaveProperty("_id", expect.any(Number));
+                  expect(lesson).toHaveProperty("questions", expect.any(Array));
+                });
+              });
+          });
+        });
+
+        describe("/api/lessons/:lesson_id", () => {
+          describe("GET", () => {
+            test("GET: 200, sends a lessons with a specified lesson_id", () => {
+              return request(app)
+                .get("/api/lessons/1")
+                .expect(200)
+                .then(({ body: { lesson } }) => {
+                  expect(lesson).toMatchObject({
+                    _id: 1,
+                    questions: [1, 2, 3, 4],
+                  });
+                });
             });
           });
+        });
+
+        test("GET:404 sends an appropriate status and error message when given a non existent lesson_id", () => {
+          return request(app)
+            .get("/api/lessons/4536822920")
+            .expect(404)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("lesson not found");
+            });
+        });
+
+        test("GET:400 sends an appropriate status and error message when given a non-valid lesson_id", () => {
+          return request(app)
+            .get("/api/lessons/osnkd")
+            .expect(400)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("bad request");
+            });
+        });
       });
     });
   });

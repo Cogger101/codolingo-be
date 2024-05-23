@@ -35,3 +35,13 @@ exports.insertUser = async (newUser) => {
   const result = await users.findOne(createdUser);
   return result;
 };
+
+exports.updateFriends = async (user_name, friend) => {
+  const result = await db
+    .collection("users")
+    .updateOne({ user_name }, { $push: { friends: friend } });
+
+  const updatedUser = await db.collection("users").findOne({ user_name });
+
+  return updatedUser;
+};
