@@ -29,19 +29,29 @@ exports.insertUser = async (newUser) => {
   const createdUser = { ...newUser };
   createdUser.score = 0;
   createdUser.progress = [];
-  createdUser.friends = [];
+  createdUser.following = [];
   const users = await db.collection("users");
   await users.insertOne(createdUser);
   const result = await users.findOne(createdUser);
   return result;
 };
 
-exports.updateFriends = async (user_name, friend) => {
+exports.updateFollowing = async (user_name, following) => {
   const result = await db
     .collection("users")
-    .updateOne({ user_name }, { $push: { friends: friend } });
+    .updateOne({ user_name }, { $push: { following: following } });
 
   const updatedUser = await db.collection("users").findOne({ user_name });
 
   return updatedUser;
 };
+
+exports.updateProgress = async (user_name, progress) => {
+  const result = await db
+    .collection("users")
+    .updateOne({ user_name }, { $push: { progress } });
+
+  const updateUser = await db.collection("users").findOne({ user_name })
+
+  return updateUser
+}

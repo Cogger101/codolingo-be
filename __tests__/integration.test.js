@@ -50,7 +50,7 @@ describe("integration tests", () => {
               expect(user).toHaveProperty("score", expect.any(Number));
               expect(user).toHaveProperty("password", expect.any(String));
               expect(user).toHaveProperty("avatar_url", expect.any(String));
-              expect(user).toHaveProperty("friends", expect.any(Array));
+              expect(user).toHaveProperty("following", expect.any(Array));
               expect(user).toHaveProperty("progress", expect.any(Array));
             });
           });
@@ -74,7 +74,7 @@ describe("integration tests", () => {
               avatar_url:
                 "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               score: 0,
-              friends: [],
+              following: [],
               progress: [],
             });
           });
@@ -97,6 +97,7 @@ describe("integration tests", () => {
       });
     });
   });
+
   describe("/api/users/:user_name", () => {
     describe("GET", () => {
       test("GET:200 sends user with a specific user_name", () => {
@@ -110,7 +111,7 @@ describe("integration tests", () => {
               password: "password",
               avatar_url:
                 "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-              friends: ["G-eebs"],
+              following: ["G-eebs"],
               progress: [1, 2, 3, 4, 5],
             });
           });
@@ -123,14 +124,35 @@ describe("integration tests", () => {
             expect(msg).toBe("user not found");
           });
       });
+      describe("/api/users/:user_name/progress", () => {
+        describe("PATCH", () => {
+          test("PATCH:200, updates the users progression with a question id, when that question has been completed", () => {
+            const testPatch = { progress: 1}
+            return request(app)
+            .patch("/api/users/thompsurn/progress")
+            .send(testPatch)
+            .expect(200)
+            .then(({body: {user}}) => {
+              expect(user).toMatchObject({
+                user_name: "thompsurn",
+                score: 0,
+                password: "password",
+                avatar_url: "https://images.pexels.com/photos/987584/pexels-photo-987584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                following: [],
+                progress: [1],
+              })
+            })
+          })
+        })
+      })
     });
 
-    describe("/api/users/:user_name/friends", () => {
+    describe("/api/users/:user_name/following", () => {
       describe("PATCH", () => {
-        test("PATCH: 200, adds a friend to the user object", () => {
-          const testPatch = { friend: "thompsurn" };
+        test("PATCH: 200, adds a username to the 'following' property on the user object, when a new follow request is made", () => {
+          const testPatch = { following: "thompsurn" };
           return request(app)
-            .patch("/api/users/cogger101/friends")
+            .patch("/api/users/cogger101/following")
             .send(testPatch)
             .expect(200)
             .then(({ body: { user } }) => {
@@ -140,7 +162,7 @@ describe("integration tests", () => {
                 avatar_url:
                   "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 score: 50,
-                friends: ["G-eebs", "thompsurn"],
+                following: ["G-eebs", "thompsurn"],
               });
             });
         });
@@ -200,13 +222,13 @@ describe("integration tests", () => {
   });
   describe("/api/lessons/:lesson_id/questions", () => {
     describe("GET", () => {
-      test.skip("GET 200: should return a series of questions for the specified id", () => {
+      test("GET 200: should return a series of questions for the specified id", () => {
         return request(app)
           .get("/api/lessons/1/questions")
           .expect(200)
-          .then(({ body: { lesson } }) => {
-            expect(lesson).toMatchObject(
-              {
+          .then(({ body: { questions } }) => {
+            expect(questions).toMatchObject(
+              [{
                 _id: 1,
                 type: "multiple choice",
                 teaching:
@@ -262,38 +284,72 @@ describe("integration tests", () => {
                 answer: ["==", "!=", ">", "<", ">=", "<="],
                 help_url:
                   "https://www.w3schools.com/python/python_operators.asp",
-              }
+              }]
             );
           });
-      });
-    });
-
-    describe("/api/questions/:question_id", () => {
-      describe("GET", () => {
-        test("GET: 200, responds with a particular question for the specified id", () => {
+        });
+        test("GET:404 sends an appropriate status and error message when given a non existent lesson id", () => {
           return request(app)
-            .get("/api/questions/1")
-            .expect(200)
-            .then(({ body: { question } }) => {
-              expect(question).toMatchObject({
-                _id: 1,
-                type: "multiple choice",
-                teaching:
-                  "A variable is like a box that holds data that you can use and manipulate in your program. Think of it as a labelled bag where you can store different types of information.",
-                question: "What is a variable?",
-                options: [
-                  "a container to store data",
-                  "an ordered list",
-                  "an unordered list",
-                  "a set of items",
-                ],
-                answer: 0,
-                help_url:
-                  "https://www.w3schools.com/python/python_variables.asp",
-              });
+            .get("/api/lessons/999/questions")
+            .expect(404)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("id not found");
             });
         });
+        test("GET:400 sends an appropriate status and error message when given a non-valid lesson id", () => {
+          return request(app)
+            .get("/api/lessons/not-an-id/questions")
+            .expect(400)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("bad request");
+            });
+        });
+
+    });
+  });
+
+  describe("/api/questions/:question_id", () => {
+    describe("GET", () => {
+      test("GET: 200, responds with a particular question for the specified id", () => {
+        return request(app)
+          .get("/api/questions/1")
+          .expect(200)
+          .then(({ body: { question } }) => {
+            expect(question).toMatchObject({
+              _id: 1,
+              type: "multiple choice",
+              teaching:
+                "A variable is like a box that holds data that you can use and manipulate in your program. Think of it as a labelled bag where you can store different types of information.",
+              question: "What is a variable?",
+              options: [
+                "a container to store data",
+                "an ordered list",
+                "an unordered list",
+                "a set of items",
+              ],
+              answer: 0,
+              help_url:
+                "https://www.w3schools.com/python/python_variables.asp",
+            });
+          });
+      });
+      test("GET:404 sends an appropriate status and error message when given a non existent question id", () => {
+        return request(app)
+          .get("/api/questions/999")
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("id not found");
+          });
+      });
+      test("GET:400 sends an appropriate status and error message when given a non-valid question id", () => {
+        return request(app)
+          .get("/api/questions/not-an-id")
+          .expect(400)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("bad request");
+          });
       });
     });
   });
 });
+

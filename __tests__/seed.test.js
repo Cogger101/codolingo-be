@@ -38,7 +38,7 @@ describe("seed()", () => {
             expect(user).toHaveProperty("score", expect.any(Number));
             expect(user).toHaveProperty("password", expect.any(String));
             expect(user).toHaveProperty("avatar_url", expect.any(String));
-            expect(user).toHaveProperty("friends", expect.any(Array));
+            expect(user).toHaveProperty("following", expect.any(Array));
             expect(user).toHaveProperty("progress", expect.any(Array));
           });
         });

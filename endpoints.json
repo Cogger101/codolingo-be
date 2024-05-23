@@ -11,13 +11,20 @@
           "score": 50,
           "password": "password",
           "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          "friends": ["G-eebs"],
-          "progress": [1, 2, 3, 4, 5]
+          "following": [
+            "G-eebs"
+          ],
+          "progress": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
         }
       ]
     }
   },
-
   "GET /api/users/:user_name": {
     "description": "serves a single user object of the specified username",
     "exampleResponse": {
@@ -26,12 +33,19 @@
         "score": 50,
         "password": "password",
         "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "friends": ["G-eebs"],
-        "progress": [1, 2, 3, 4, 5]
+        "following": [
+          "G-eebs"
+        ],
+        "progress": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       }
     }
   },
-
   "POST /api/users/": {
     "description": "adds a user, serves the created user back to the client",
     "exampleRequest": {
@@ -39,32 +53,169 @@
       "password": "password",
       "avatar_url": "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
-
     "exampleResponse": {
       "postedUser": {
         "user_name": "octopus",
         "score": 0,
         "password": "password",
         "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "friends": [],
+        "following": [],
         "progress": []
       }
     }
   },
-
+  "PATCH /api/:user_id/progress": {
+    "description": "updates the given users progress, when a lesson has been completed", 
+    "exampleRequest": {
+      "user_name": "octopus",
+      "progress": "1"
+    },
+    "exampleResponse": {
+      "postedUser": {
+        "user_name": "octopus",
+        "score": 0,
+        "password": "password",
+        "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "following": [],
+        "progress": [1]
+      }
+  }
+},
+"PATCH /api/:user_id/following": {
+  "description": "updates who the given user is following, when they follow another user", 
+  "exampleRequest": {
+    "user_name": "octopus",
+    "following": "cogger101"
+  },
+  "exampleResponse": {
+    "postedUser": {
+      "user_name": "octopus",
+      "score": 0,
+      "password": "password",
+      "avatar_url": "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "following": ["cogger101"],
+      "progress": [1]
+    }
+}
+},
   "GET /api/lessons": {
     "description": "serves an array of all lessons",
     "exampleResponse": {
       "lessons": [
         {
           "_id": 1,
-          "questions": [1, 2, 3, 4]
+          "questions": [
+            1,
+            2,
+            3,
+            4
+          ]
         },
         {
           "_id": 2,
-          "questions": [5, 6, 7, 8]
+          "questions": [
+            5,
+            6,
+            7,
+            8
+          ]
         }
       ]
+    }
+  },
+  "GET /api/lessons/:lesson_id/questions": {
+    "description": "serves an array of all questions, within a given lesson",
+    "exampleResponse": {
+      "questions": [
+        {
+          "_id": 1,
+          "type": "multiple choice",
+          "teaching": "A variable is like a box that holds data that you can use and manipulate in your program. Think of it as a labelled bag where you can store different types of information.",
+          "question": "What is a variable?",
+          "options": [
+            "a container to store data",
+            "an ordered list",
+            "an unordered list",
+            "a set of items"
+          ],
+          "answer": 0,
+          "help_url": "https://www.w3schools.com/python/python_variables.asp"
+        },
+        {
+          "_id": 2,
+          "type": "multiple choice",
+          "teaching": "In Python, assigning a value to a variable is straightforward. You use the equals sign (=) to do this.",
+          "question": "How would you assign a value to a variable?",
+          "options": [
+            "let a = 7",
+            "var a = 7",
+            "a = 7",
+            "const a = 7"
+          ],
+          "answer": 2,
+          "help_url": "https://www.w3schools.com/python/python_variables.asp"
+        },
+        {
+          "_id": 3,
+          "type": "true or false",
+          "teaching": "Tuple assignment allows for the assignment of multiple values to multiple variables. Example: a, b = 1, 2 assigns 1 to a and 2 to b.",
+          "question": "Multiples values can be assigned to multiple variables at once.",
+          "options": [
+            "true",
+            "false"
+          ],
+          "answer": 0,
+          "help_url": "https://www.w3schools.com/python/python_variables.asp"
+        },
+        {
+          "_id": 4,
+          "type": "drag and drop",
+          "teaching": "In Python, comparison operators allow you to compare values and determine relationships between them. Let's break down each operator:\n== This operator checks if two values are equal. For example, 5 == 5 returns True.\n! The exclamation mark (!) stands for 'not' in Python. It's used in combination with = to form the != operator, which checks if two values are not equal. For instance, 5 != 3 returns True.\n> This operator checks if the value on the left is greater than the value on the right. For example, 7 > 5 returns True.\n< This operator checks if the value on the left is less than the value on the right. For instance, 3 < 5 returns True.",
+          "question": "Drag the following to the correct definition:",
+          "options": [
+            "<=",
+            "!=",
+            "<",
+            "==",
+            ">=",
+            ">"
+          ],
+          "answer_options": [
+            "is equal to",
+            "not equal to",
+            "greater than",
+            "less than",
+            "greater than or equal to",
+            "less than or equal to"
+          ],
+          "answer": [
+            "==",
+            "!=",
+            ">",
+            "<",
+            ">=",
+            "<="
+          ],
+          "help_url": "https://www.w3schools.com/python/python_operators.asp"
+        }
+      ]
+    }
+  },
+  "GET /api/questions/:question_id": {
+    "description": "serves the question in relation to the given id",
+    "exampleResponse": {
+      "_id": 2,
+      "type": "multiple choice",
+      "teaching": "In Python, assigning a value to a variable is straightforward. You use the equals sign (=) to do this.",
+      "question": "How would you assign a value to a variable?",
+      "options": [
+        "let a = 7",
+        "var a = 7",
+        "a = 7",
+        "const a = 7"
+      ],
+      "answer": 2,
+      "help_url": "https://www.w3schools.com/python/python_variables.asp"
     }
   }
 }

@@ -16,15 +16,12 @@ exports.getQuestionsByLessonId = (req, res, next) => {
   const { lesson_id } = req.params;
   findQuestionsByLessonId(lesson_id)
     .then((questionIds) => {
-    return questionIds
-        .map((questionId) => {
-           findQuestionsById(questionId).then((question) => {
-            return question;
-          });
-        })
+      return Promise.all(questionIds.map((questionId) => {
+        return findQuestionsById(questionId)
+      }))
         .then((questions) => {
-          res.status(200).send({ questions });
-        });
+          res.status(200).send({ questions })
+        })
     })
     .catch(next);
 };
