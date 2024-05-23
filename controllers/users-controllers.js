@@ -2,6 +2,7 @@ const {
   findUsers,
   findUserByName,
   insertUser,
+  updateFriends,
 } = require("../Models/users-models");
 
 exports.getUsers = (req, res, next) => {
@@ -26,6 +27,17 @@ exports.postUser = (req, res, next) => {
   insertUser(newUser)
     .then((postedUser) => {
       res.status(201).send({ postedUser });
+    })
+    .catch(next);
+};
+
+exports.patchFriends = (req, res, next) => {
+  const { user_name } = req.params;
+  const {friend} = req.body;
+
+  updateFriends(user_name, friend)
+    .then((user) => {
+      res.status(200).send({ user });
     })
     .catch(next);
 };
