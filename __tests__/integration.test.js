@@ -144,6 +144,16 @@ describe("integration tests", () => {
             })
           })
         })
+        test("PATCH:404 sends an appropriate status and error message when given a non existent username", () => {
+          const testPatch = { progress: 1}
+          return request(app)
+            .patch("/api/users/not-a-valid-user/progress")
+            .send(testPatch)
+            .expect(404)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("user not found");
+            });
+        });
       })
     });
 
@@ -164,6 +174,16 @@ describe("integration tests", () => {
                 score: 50,
                 following: ["G-eebs", "thompsurn"],
               });
+            });
+        });
+        test("PATCH:404 sends an appropriate status and error message when given a non existent username", () => {
+          const testPatch = { following: "thompsurn" };
+          return request(app)
+            .patch("/api/users/not-a-valid-user/following")
+            .send(testPatch)
+            .expect(404)
+            .then(({ body: { msg } }) => {
+              expect(msg).toBe("user not found");
             });
         });
       });

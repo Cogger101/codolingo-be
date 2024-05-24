@@ -43,6 +43,11 @@ exports.updateFollowing = async (user_name, following) => {
 
   const updatedUser = await db.collection("users").findOne({ user_name });
 
+
+  if (updatedUser === null) {
+    return Promise.reject({ status: 404, msg: "user not found" });
+  }
+
   return updatedUser;
 };
 
@@ -50,8 +55,12 @@ exports.updateProgress = async (user_name, progress) => {
   const result = await db
     .collection("users")
     .updateOne({ user_name }, { $push: { progress } });
+    
+    const updatedUser = await db.collection("users").findOne({ user_name })
 
-  const updateUser = await db.collection("users").findOne({ user_name })
+    if (updatedUser === null) {
+      return Promise.reject({ status: 404, msg: "user not found" });
+    }
 
-  return updateUser
+  return updatedUser
 }
