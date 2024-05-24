@@ -277,7 +277,7 @@ describe("integration tests", () => {
               },
               {
                 _id: 3,
-                type: "true or false",
+                type: "multiple choice",
                 teaching:
                   "Tuple assignment allows for the assignment of multiple values to multiple variables. Example: a, b = 1, 2 assigns 1 to a and 2 to b.",
                 question:
