@@ -20,7 +20,7 @@ module.exports = [
 	},
 	{
 		_id: 3,
-		type: "true or false",
+		type: "multiple choice",
 		teaching: "Tuple assignment allows for the assignment of multiple values to multiple variables. Example: a, b = 1, 2 assigns 1 to a and 2 to b.",
 		question: "Multiples values can be assigned to multiple variables at once.",
 		options: ["true", "false"],
@@ -83,7 +83,7 @@ module.exports = [
 	},
 	{
 		_id : 9,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`, 
 		question : "Which data type holds data in key-value pair form",
 		options: ["Numeric", "String", "Sequence", "Mapping"], 
@@ -92,7 +92,7 @@ module.exports = [
 	},
 	{
 		_id : 10,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : "Which data type holds data in an unordered collection of unique items?",
 		options: ["Sequence", "Mapping", "Set", "Boolean"], 
@@ -101,7 +101,7 @@ module.exports = [
 	},
 	{
 		_id : 11,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : "Data types can be converted from one type to another",
 		options: ["true", "false"], 
@@ -110,7 +110,7 @@ module.exports = [
 	},
 	{
 		_id : 12,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : "Which data type in Python is used to represent decimal numbers, including both integers and fractions?",
 		options: ["int", "str", "float", "list"], 
@@ -119,7 +119,7 @@ module.exports = [
 	},
 	{
 		_id : 13,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : " Which of the following is an example of a complex number?",
 		options: ['1+7j', '50002939302939022432', '-2', '3.0930'], 
@@ -128,7 +128,7 @@ module.exports = [
 	},
 	{
 		_id : 14,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : "In Python, a list is a _____",
 		options: ['An ordered collection of items within square brackets and separated by commas', ' A sequence of characters enclosed in quotation marks', 'A set of key-value pairs separated by colons', ' A container to hold items'], 
@@ -137,7 +137,7 @@ module.exports = [
 	},
 	{
 		_id : 15,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question : "Which one of these is immutable?",
 		options: ['List', 'Dictionary', 'Set', 'Tuple'], 
@@ -146,7 +146,7 @@ module.exports = [
 	},
 	{
 		_id : 16,
-		type: "Multiple Choice",
+		type: "multiple choice",
 		teaching: "In Python, there are tools to help us determine the type of data we're working with. We can achieve this using functions and methods. \nIdentifying Data Types with type(). The type() function in Python allows us to identify the data type or class to which a value belongs. It returns the class type of the argument passed to it",
 		question : "Which function enables us to identify the data type or class to which a value belongs?",
 		additional_text: ['x = 7', 'print(____ _7_)'],
