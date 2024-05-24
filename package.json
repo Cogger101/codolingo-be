@@ -1,13 +1,14 @@
 {
   "name": "codolingo-be",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "listen.js",
   "scripts": {
     "setup-dbs": "mongosh -f ./db/setup.js",
     "seed": "node ./db/seeds/run-seed.js",
     "test": "jest --runInBand",
     "prepare": "husky",
-    "start": "node listen.js"
+    "start": "node listen.js",
+    "seed-prod": "NODE_ENV=production npm run seed"
   },
   "keywords": [],
   "author": "",
