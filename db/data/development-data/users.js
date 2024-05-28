@@ -13,7 +13,7 @@ module.exports = [
     password: "password",
     avatar_url: "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     following: ["G-eebs"],
-    progress: [1, 2, 3, 4, 5],
+    progress: [1, 2, 3, 4, 5, 6, 7],
   },  
   {
     user_name: "thompsurn",
