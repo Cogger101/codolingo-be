@@ -47,7 +47,6 @@ describe("integration tests", () => {
             users.forEach((user) => {
               expect(user).toHaveProperty("_id", expect.any(String));
               expect(user).toHaveProperty("user_name", expect.any(String));
-              expect(user).toHaveProperty("score", expect.any(Number));
               expect(user).toHaveProperty("password", expect.any(String));
               expect(user).toHaveProperty("avatar_url", expect.any(String));
               expect(user).toHaveProperty("following", expect.any(Array));
@@ -73,7 +72,6 @@ describe("integration tests", () => {
               password: "password",
               avatar_url:
                 "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-              score: 0,
               following: [],
               progress: [],
             });
@@ -88,7 +86,6 @@ describe("integration tests", () => {
             password: "password",
             avatar:
               "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            score: 0,
           })
           .expect(400)
           .then(({ body: { msg } }) => {
@@ -107,7 +104,6 @@ describe("integration tests", () => {
           .then(({ body: { user } }) => {
             expect(user).toMatchObject({
               user_name: "cogger101",
-              score: expect.any(Number),
               password: "password",
               avatar_url:
                 "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -135,7 +131,6 @@ describe("integration tests", () => {
             .then(({body: {user}}) => {
               expect(user).toMatchObject({
                 user_name: "thompsurn",
-                score: 0,
                 password: "password",
                 avatar_url: "https://images.pexels.com/photos/987584/pexels-photo-987584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 following: [],
@@ -171,7 +166,6 @@ describe("integration tests", () => {
                 password: "password",
                 avatar_url:
                   "https://images.pexels.com/photos/982047/pexels-photo-982047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                score: 50,
                 following: ["G-eebs", "thompsurn"],
               });
             });

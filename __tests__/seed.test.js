@@ -35,7 +35,6 @@ describe("seed()", () => {
           result.forEach((user) => {
             expect(user).toHaveProperty("_id", expect.any(Object));
             expect(user).toHaveProperty("user_name", expect.any(String));
-            expect(user).toHaveProperty("score", expect.any(Number));
             expect(user).toHaveProperty("password", expect.any(String));
             expect(user).toHaveProperty("avatar_url", expect.any(String));
             expect(user).toHaveProperty("following", expect.any(Array));
