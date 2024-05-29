@@ -27,7 +27,6 @@ exports.insertUser = async (newUser) => {
     return Promise.reject({ status: 400, msg: "invalid request" });
   }
   const createdUser = { ...newUser };
-  createdUser.score = 0;
   createdUser.progress = [];
   createdUser.following = [];
   const users = await db.collection("users");
