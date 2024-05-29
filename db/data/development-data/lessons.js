@@ -17,10 +17,10 @@ module.exports = [
   },
   {
     _id: 5,
-    questions: [21, 22, 23, 24, 25]
+    questions: [21, 22]
   },
   {
     _id: 6,
-    questions: [26, 27, 28, 29, 30]
+    questions: [23, 24]
   }
 ]
