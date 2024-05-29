@@ -47,7 +47,8 @@ module.exports = [
 	{
 		_id: 5,
 		type: "fill in the blank",
-		teaching: "",
+		teaching:  `In Python, define the type of data that a variable can store. Understanding different data 
+		types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
 		question: "________ is the data type in Python that holds a sequence of characters.",
 		answer: "string",
 		help_url: "https://www.w3schools.com/python/python_strings.asp",
@@ -57,7 +58,7 @@ module.exports = [
 		type: "fill in the blank",
 		teaching: `In Python, define the type of data that a variable can store. Understanding different data 
 		types is essential for effective programming. Let's explore some common data types:\nNumeric\nData Types: int, float, complex\nDescription: Holds numeric values.\nExample:5, 3.14, 1+7j\nUsage: Mathematical calculations and representing numbers.\nString\nData Type: str\nDescription: Holds sequences of characters.\nExample: "Hello"\nUsage: Textual data like words and sentences.\nSequence\nData Types: list, tuple, range\nDescription: Holds a collection of items.\nExamples: [1, 2, 3], (1, 2, 3), range(0, 10)\nUsage: Storing and manipulating sequences of data.\nMapping\nData Type: dict\nDescription: Holds data in key-value pair form.\nExample: {"name": "Alice", "age": 25}\nUsage: Storing data with associated keys for efficient retrieval.\nBoolean\nData Type: bool\nDescription: Holds either True or False.\nExample: True\nUsage: Logical operations and conditional expressions.\nSet\nData Types: set, frozenset\nDescription: Holds a collection of unique items.\nExample: {1, 2, 3}`,
-		question: "A data type that holds either a True or False value is a called a ________.",
+		question: "A data type that holds either a True or False value is called a ________.",
 		answer: "boolean",
 		help_url: "https://www.w3schools.com/python/python_booleans.asp",
 	},
