@@ -20,4 +20,18 @@ module.exports = [
     following: [],
     progress: [],
   },
+  {
+    user_name: "mlee246",
+    password: "password",
+    avatar_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    following: ["G-eebs", "cogger101", "thompsurn", "aneesahmahmood", ],
+    progress: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  },
+  {
+    user_name: "aneesahmahmood",
+    password: "password",
+    avatar_url: "https://images.pexels.com/photos/1302290/pexels-photo-1302290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    following: ["mlee246", "cogger101"],
+    progress: [1, 2],
+  },
 ]
